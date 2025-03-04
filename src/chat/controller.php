@@ -4,7 +4,6 @@ namespace chat;
 
 use bravedave\dvc\ServerRequest;
 use Controller as rootController;
-use strings;
 
 class controller extends rootController {
   protected function _index() {

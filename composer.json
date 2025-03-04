@@ -4,6 +4,11 @@
   },
   "autoload": {
     "psr-4": {
+      "chat\\": "src/chat/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
       "": "src/app/"
     }
   },

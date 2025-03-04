@@ -69,6 +69,7 @@ use bravedave\dvc\strings;
         chatbox.append(`<div class="row gx-2"><div class="col-auto">
           <div class="alert alert-primary" role="alert">${txt.toHtml()}</div>
         </div></div>`);
+        chatbox.scrollTop(chatbox[0].scrollHeight);
 
         _.fetch.post.form(_.url('<?= $this->route ?>'), this)
           .then(d => {
