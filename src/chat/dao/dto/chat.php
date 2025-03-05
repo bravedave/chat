@@ -12,6 +12,9 @@ class chat extends dto {
   public string $updated = '';
 
   public string $name = '';
+  public int $assistant = 0;
+  public int $users_id = 0;
+
 
   // rich data
   public array $lines = [];

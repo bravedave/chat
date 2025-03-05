@@ -5,7 +5,7 @@ namespace chat;
 use config as rootConfig;
 
 class config extends rootConfig {  // noting: config extends global config classes
-  const chat_db_version = 1;
+  const chat_db_version = 3;
   const label = 'Chat';  // general label for application
 
   const chat_max_tokens = 500;

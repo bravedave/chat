@@ -32,6 +32,15 @@ use strings, theme;
               value="<?= htmlentities($dto->name) ?>" required autofocus>
             <label for="<?= $_uid ?>">chat name</label>
           </div>
+
+          <div class="form-floating mb-3">
+            <select class="form-select" name="assistant"
+              id="<?= $_uid = strings::rand() ?>" placeholder="assistant type">
+              <option value="0" <?= 0 == $dto->assistant ? 'selected' : '' ?>>Useful assistant</option>
+              <option value="4" <?= 4 == $dto->assistant ? 'selected' : '' ?>>Coding assistant</option>
+            </select>
+            <label for="<?= $_uid ?>">assistant type</label>
+          </div>
         </div>
         <div class="modal-footer">
           <div class="js-message"></div>
@@ -75,7 +84,7 @@ use strings, theme;
             return false;
           });
 
-          form.find('input[name="name"]').focus();
+        form.find('input[name="name"]').focus();
       });
     })(_brayworth_);
   </script>

@@ -3,6 +3,7 @@
 namespace chat\dao;
 
 use bravedave\dvc\{dao, dtoSet};
+use currentUser;
 
 class chat extends dao {
   protected $_db_name = 'chat';
@@ -22,13 +23,18 @@ class chat extends dao {
 
   public function getMatrix(): array {
 
-    $sql = 'SELECT
+    $sql = sprintf(
+      'SELECT
       c.`id`,
       c.`name`,
+      c.`assistant`,
       c.`updated`,
       (SELECT count(*) FROM `chat_lines` WHERE `chat_id` = c.`id`) as linecount
       FROM `chat` c
-      ORDER BY c.`id`';
+      WHERE users_id = %d
+      ORDER BY c.`id`',
+      currentUser::id()
+    );
 
     return (new dtoSet)($sql);
   }
@@ -45,6 +51,7 @@ class chat extends dao {
   }
 
   public function Insert($a) {
+    $a['users_id'] = currentUser::id();
     $a['created'] = $a['updated'] = self::dbTimeStamp();
     return parent::Insert($a);
   }

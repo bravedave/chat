@@ -39,6 +39,7 @@ use strings;
             <tr>
               <td class="text-center js-line-number"></td>
               <td>name</td>
+              <td>assistant</td>
               <td class="text-center">updated</td>
               <td class="text-center">lines</td>
             </tr>
@@ -126,10 +127,13 @@ use strings;
     const matrixRow = dto => {
 
       // console.log(dto);
+      let assistant = 'Useful assistant';
+      if (dto.assistant == 4) assistant = 'Coding assistant';
 
       const tr = $(`<tr class="pointer" data-id="${dto.id}">
           <td class="text-center js-line-number" />
           <td class="js-name">${dto.name}</td>
+          <td class="js-assistant">${assistant}</td>
           <td class="text-center js-updated">${_.asLocaleDate(dto.updated)}</td>
           <td class="text-center js-count">${dto.linecount}</td>
         </tr>`)
@@ -229,7 +233,10 @@ use strings;
           if ('ack' == d.response) {
 
             const dto = d.data;
+            let assistant = 'Useful assistant';
+            if (dto.assistant == 4) assistant = 'Coding assistant';
             tr.find('.js-name').text(dto.name);
+            tr.find('.js-assistant').text(assistant);
             tr.find('.js-updated').text(_.asLocaleDate(dto.updated));
             tr.find('.js-count').text(dto.lines.length);
             tr.data('dto', dto)

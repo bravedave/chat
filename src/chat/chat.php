@@ -12,6 +12,11 @@ namespace chat;
 
 class chat {
 
+  const chat_helpful_assistant = 'You are a helpful assistant.';
+  const chat_coding_assistant = 'You are an expert web development assistant' .
+    ' specializing in PHP, JavaScript, and MariaDB.' .
+    ' Provide best practices, real-world examples, and efficient code snippets.';
+
   /**
    *
    *

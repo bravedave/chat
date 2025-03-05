@@ -54,7 +54,8 @@ final class handler {
     $action = $request('action');
 
     $a = [
-      'name' => $request('name')
+      'name' => $request('name'),
+      'assistant' => (int)$request('assistant')
     ];
 
     $id = (int)$request('id');
@@ -98,7 +99,7 @@ final class handler {
           $chatLines->Insert($a);
 
           $aMessage = [
-            ["role" => "system", "content" => "You are a helpful assistant."],
+            ["role" => "system", "content" => chat::chat_helpful_assistant],
           ];
           foreach ($dto->lines as $line) {
 
@@ -142,7 +143,7 @@ final class handler {
         // $chatLines->Insert($a);
 
         $aMessage = [
-          ["role" => "system", "content" => "You are a helpful assistant."],
+          ["role" => "system", "content" => chat::chat_helpful_assistant],
           ["role" => "user", "content" => $message]
         ];
         // logger::dump($aMessage);
@@ -203,7 +204,7 @@ final class handler {
 
         /** @var dao\dto\chat $dto */
         $aMessage = [
-          ["role" => "system", "content" => "You are a helpful assistant."],
+          ["role" => "system", "content" => chat::chat_helpful_assistant],
         ];
         foreach ($dto->lines as $line) {
 

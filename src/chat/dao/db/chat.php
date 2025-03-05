@@ -13,5 +13,7 @@ $dbc->defineField('created', 'datetime');
 $dbc->defineField('updated', 'datetime');
 
 $dbc->defineField('name', 'varchar');
+$dbc->defineField('assistant', 'int');
+$dbc->defineField('users_id', 'bigint');
 
 $dbc->check();  // actually do the work, check that table and fields exist
