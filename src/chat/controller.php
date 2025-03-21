@@ -8,7 +8,12 @@ use Controller as rootController;
 class controller extends rootController {
   protected function _index() {
 
-    $this->title = config::label;
+    $this->data = (object)[
+      'title' => $this->title = config::label,
+      'pageUrl' => strings::url($this->route),
+      'searchFocus' => false,
+      'aside' => config::index_set
+    ];
 
     $this->renderBS5([
       'aside' => fn() => $this->load('chat-index'),
