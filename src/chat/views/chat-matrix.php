@@ -10,8 +10,6 @@
 
 namespace chat;
 
-use strings;
-
 ?>
 <div class="accordion" id="<?= $_uidAccordion = strings::rand() ?>">
 
@@ -241,7 +239,7 @@ use strings;
             tr.find('.js-count').text(dto.lines.length);
             tr.data('dto', dto)
 
-            console.log(dto);
+            // console.log(dto);
           } else {
             _.growl(d);
           }
@@ -250,9 +248,8 @@ use strings;
 
     const matrixRowView = function(e) {
 
-      const $this = $(this);
-      $this.addClass('table-active');
-      const dto = $this.data('dto');
+      $(this).addClass('table-active');
+      const dto = $(this).data('dto');
 
       const tabs = _.tabs(workbench);
       const view = tabs.newTab('view');
@@ -264,6 +261,8 @@ use strings;
           .empty()
           .load(_.url(`<?= $this->route ?>/view/${this.dataset.id}`));
       });
+
+      view.pane.on('chat-updated', (e, chat) => $(this).trigger('refresh'));
 
       tabs.nav.prepend(`<h5 class="me-auto mt-2">${dto.name}</h5>`);
       tabs.nav.append(`<button type="button" class="btn-close mt-2 ms-2" data-bs-toggle="collapse"

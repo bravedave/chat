@@ -11,6 +11,7 @@
 namespace chat;
 
 use bravedave\dvc\{json, logger, ServerRequest};
+use League\CommonMark\GithubFlavoredMarkdownConverter;
 
 final class handler {
 
@@ -47,6 +48,28 @@ final class handler {
 
     $dao = new dao\chat;
     return json::ack($action, $dao->getMatrix());
+  }
+
+  public static function markdownToHtml(ServerRequest $request): json {
+
+    if ($markdown = $request('markdown')) {
+
+      $mdo = [
+        'allow_unsafe_links' => $options['allow_unsafe_links'] ?? false,
+        'html_input' => $options['html_input'] ?? 'strip'
+      ];
+
+      $converter = new GithubFlavoredMarkdownConverter($mdo);
+      // logger::debug(sprintf('<%s> %s', $markdown, logger::caller()));
+
+      $output = (string)$converter->convert($markdown);
+      // logger::debug(sprintf('<%s> %s', $out, logger::caller()));
+      return json::ack($request('action'))
+        ->add('input', $markdown)
+        ->add('output', $output);
+    }
+
+    return json::ack($request('action'));
   }
 
   static function saveChat(ServerRequest $request): json {
@@ -98,9 +121,16 @@ final class handler {
           ];
           $chatLines->Insert($a);
 
-          $aMessage = [
-            ["role" => "system", "content" => chat::chat_helpful_assistant],
-          ];
+          $aMessage = [];
+          if (chat::coding_assistant == $dto->assistant) {
+
+            $aMessage[] = ["role" => "system", "content" => chat::chat_coding_assistant];
+          } else {
+
+            $aMessage[] = ["role" => "system", "content" => chat::chat_helpful_assistant];
+          }
+
+
           foreach ($dto->lines as $line) {
 
             $aMessage[] = [

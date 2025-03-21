@@ -46,6 +46,7 @@ class controller extends rootController {
       'chat-save' => handler::saveChat($request),
       'chat-send' => handler::sendChat($request),
       'chat-suggest-topic' => handler::suggestTopic($request),
+      'markdown-to-html' => handler::markdownToHtml($request),
       default => parent::postHandler()
     };
   }

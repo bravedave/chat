@@ -10,7 +10,12 @@
 
 namespace chat;
 
+use bravedave\dvc\logger;
+
 class chat {
+
+  const helpful_assistant = 0;
+  const coding_assistant = 4;
 
   const chat_helpful_assistant = 'You are a helpful assistant.';
   const chat_coding_assistant = 'You are an expert web development assistant' .
@@ -36,6 +41,9 @@ class chat {
 
   public function __invoke(): array {
 
+    $debug = true;
+    $debug = false;
+
     // OpenAI API request
     $ch = curl_init("https://api.openai.com/v1/chat/completions");
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -49,6 +57,8 @@ class chat {
       "model" => "gpt-4",  // or "gpt-3.5-turbo" for cheaper responses
       "messages" => $this->messages
     ];
+
+    if ($debug) logger::dump($data);
 
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
     $response = curl_exec($ch);

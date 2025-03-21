@@ -10,7 +10,7 @@
 
 namespace chat;
 
-use strings, theme;
+use theme;
 
 /** @var dao\dto\chat $dto */
 ?>
@@ -36,8 +36,8 @@ use strings, theme;
           <div class="form-floating mb-3">
             <select class="form-select" name="assistant"
               id="<?= $_uid = strings::rand() ?>" placeholder="assistant type">
-              <option value="0" <?= 0 == $dto->assistant ? 'selected' : '' ?>>Useful assistant</option>
-              <option value="4" <?= 4 == $dto->assistant ? 'selected' : '' ?>>Coding assistant</option>
+              <option value="0" <?= chat::helpful_assistant == $dto->assistant ? 'selected' : '' ?>>Useful assistant</option>
+              <option value="4" <?= chat::coding_assistant == $dto->assistant ? 'selected' : '' ?>>Coding assistant</option>
             </select>
             <label for="<?= $_uid ?>">assistant type</label>
           </div>
