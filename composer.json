@@ -1,4 +1,13 @@
 {
+  "name": "bravedave/chat",
+  "description": "I asked Chat GPT how to make a ChatGPT style chatbot ...",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Dave Bray",
+      "email": "david@brayworth.com.au"
+    }
+  ],
   "require": {
     "bravedave/dvc": "*"
   },
