@@ -18,7 +18,7 @@ namespace bravedave\chat;
   <input type="hidden" name="action" value="chat-send">
   <input type="hidden" name="id" value="<?= $dto->id ?>">
 
-  <div class="js-chatbox overflow-y-auto px-2 mb-2" style="height:calc(100vh - 12.5rem)">
+  <div class="js-chatbox overflow-y-auto px-2 mb-2" style="height:calc(100vh - 13rem)">
     <?php foreach ($dto->lines as $line) {
 
       if ('user' == $line->role) { ?>
