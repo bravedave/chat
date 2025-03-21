@@ -25,11 +25,11 @@ class config extends rootConfig {  // noting: config extends global config class
     if (file_exists($path)) {
 
       $_a = [
-        'openai_api_key' => '',
+        'OPENAI_API_KEY' => '',
       ];
 
       $a = (object)array_merge($_a, (array)json_decode(file_get_contents($path)));
-      static::$OPENAI_API_KEY = $a->openai_api_key;
+      static::$OPENAI_API_KEY = $a->OPENAI_API_KEY;
     }
   }
 }
