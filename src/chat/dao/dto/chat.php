@@ -1,6 +1,6 @@
 <?php
 // file: src/chat/dao/dto/chat.php
-namespace chat\dao\dto;
+namespace bravedave\chat\dao\dto;
 
 use bravedave\dvc\dto;
 

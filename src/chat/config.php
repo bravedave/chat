@@ -1,6 +1,6 @@
 <?php
 // file: src/chat/config.php
-namespace chat;
+namespace bravedave\chat;
 
 use config as rootConfig;
 

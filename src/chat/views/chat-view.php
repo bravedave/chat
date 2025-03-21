@@ -8,7 +8,7 @@
  *
 */
 
-namespace chat;
+namespace bravedave\chat;
 
 /** @var dao\dto\chat $dto */
 

@@ -8,7 +8,7 @@
  *
 */
 
-namespace chat;
+namespace bravedave\chat;
 
 use League\CommonMark\GithubFlavoredMarkdownConverter;
 use bravedave\dvc\strings as dvcStrings;

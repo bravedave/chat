@@ -8,7 +8,7 @@
  *
 */
 
-namespace chat;
+namespace bravedave\chat;
 
 use bravedave\dvc\{json, logger, ServerRequest};
 use League\CommonMark\GithubFlavoredMarkdownConverter;

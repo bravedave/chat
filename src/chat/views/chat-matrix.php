@@ -8,7 +8,7 @@
  *
 */
 
-namespace chat;
+namespace bravedave\chat;
 
 ?>
 <div class="accordion" id="<?= $_uidAccordion = strings::rand() ?>">

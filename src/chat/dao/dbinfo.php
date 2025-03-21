@@ -8,7 +8,7 @@
  *
 */
 
-namespace chat\dao;
+namespace bravedave\chat\dao;
 
 use bravedave\dvc\dbinfo as dvcDbInfo;
 

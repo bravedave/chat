@@ -1,6 +1,6 @@
 <?php
 // file: src/chat/controller.php
-namespace chat;
+namespace bravedave\chat;
 
 use bravedave\dvc\ServerRequest;
 use Controller as rootController;
